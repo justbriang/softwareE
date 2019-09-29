@@ -67,6 +67,7 @@
                           </li>
                       @endif
                   @else
+                  <li><a href="/Product/create">New Stock</a></li>
                       <li class="nav-item dropdown">
                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                               <img src ="login.png" height="25px"/>{{ Auth::user()->name }} <span class="caret"></span>
@@ -87,7 +88,7 @@
                   @endguest
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/products/create">New Stock</a></li>
+                    
                     </ul>
                 
                   </nav>
@@ -113,7 +114,7 @@
                           <a class="dropdown-item" href="{{ url('/Purchases') }}"> Purchases</a>
                           <a class="dropdown-item" href="{{ url('/Orders') }}">Orders</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="{{ url('/upStock') }}">Update Stock</a>
+                          <a class="dropdown-item" href="{{ url('/Product/create') }}">Update Stock</a>
                          
                         </div>
                       </li>
