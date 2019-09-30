@@ -70,7 +70,7 @@
                   <li><a  class="nav-link" href="/Product/create">New Stock</a></li>
                       <li class="nav-item dropdown">
                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                              <img src ="login.png" height="25px"/>{{ Auth::user()->name }} <span class="caret"></span>
+                              <img src ={{ asset('login.png') }} height="25px"/>{{ Auth::user()->name }} <span class="caret"></span>
                           </a>
 
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -119,7 +119,7 @@
                         </div>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link"  href="{{ url('/Productph') }}"> Stock</a>
+                        <a class="nav-link"  href="{{ url('/Product') }}"> Stock</a>
                          
                       </li>
                       <li class="nav-item">
