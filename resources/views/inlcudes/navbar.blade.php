@@ -37,7 +37,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-image: url("/landing.jpg"); 
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
