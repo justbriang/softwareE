@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
+
 
 class ProductController extends Controller
 {
@@ -13,9 +15,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+
+    {  
         $product=Product::orderby('Productname','asc')->take(3)->get();
-        return view('products.Product')->with('product',$product);
+        return view('products.Product')->with('product',$product)
+        ;
     }
 
     /**
