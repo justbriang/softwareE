@@ -14,7 +14,7 @@
                     <tr> 
                     <td>{{$category->Categoryname}}</td>
                     <td>{{$category->updated_at}}</td>
-                    <td><a href="/Category/{{$category->id}}/edit" class="btn btn-default">Edit</a></td>
+                    <td><a href="/Category/{{$category->id}}/edit" class="btn btn-info">Edit</a></td>
                     <td> {!!Form::open(['action'=>['CategoryController@destroy',$category->id],'method'=>'POST','class'=>'pull-right'])!!}
                            {{Form::hidden('_method','DELETE')}}
                            {{Form::Submit('Delete',['class'=>'btn btn-danger'])}}
