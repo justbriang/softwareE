@@ -67,7 +67,7 @@
                           </li>
                       @endif
                   @else
-                  <li><a  class="nav-link" href="/Product/create">New Stock</a></li>
+                  
                       <li class="nav-item dropdown">
                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                               <img src {{ asset('login.png') }}= height="25px"/>{{ Auth::user()->name }} <span class="caret"></span>
@@ -106,15 +106,15 @@
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="fas fa-fw fa-folder"></i>
-                          <span>Services</span>
+                          <span>updates</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                           <h6 class="dropdown-header">Daily Activities:</h6>
-                          <a class="dropdown-item" href={{ url('/sales') }}>Sales</a>
-                          <a class="dropdown-item" href="{{ url('/Purchases') }}"> Purchases</a>
+                          <a class="dropdown-item" href={{ url('/Product/create') }}>update stock</a>
+                          <a class="dropdown-item" href="{{ url('/Category/create') }}">add category</a>
                           <a class="dropdown-item" href="{{ url('/Orders') }}">Orders</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="{{ url('/Product/create') }}">Update Stock</a>
+                          
                          
                         </div>
                       </li>
@@ -122,6 +122,11 @@
                         <a class="nav-link"  href="{{ url('/Product') }}"> Stock</a>
                          
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link"  href="{{ url('/Category') }}">category</a>
+                           
+                        </li>
+                      
                       <li class="nav-item">
                         <a class="nav-link" href="{{ url('/tables') }}">Tables<a>
                          
