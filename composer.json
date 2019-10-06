@@ -10,6 +10,8 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
+        "khill/datatableplus": "dev-master",
+        "khill/lavacharts": "3.1.*",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0"
@@ -60,5 +62,5 @@
             "@php artisan key:generate --ansi"
         ]
     }
-   
+
 }

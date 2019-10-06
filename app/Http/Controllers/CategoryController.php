@@ -14,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category=Category::orderby('Categoryname','asc')->take(3)->get();
-        return view('category.index')->with('category',$category);
+        $category=Category::orderby('Categoryname','asc')->take(5)->get();
+        return view('category.index')->with('category');
     }
 
     /**

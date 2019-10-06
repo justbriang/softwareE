@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-    
+
                      <!-- Icon Cards-->
         <div class="row">
             <div class="col-xl-3 col-sm-6 mb-3">
@@ -72,18 +72,62 @@
               </div>
             </div>
           </div>
-  
+
           <!-- Area Chart Example-->
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-chart-area"></i>
                Chart </div>
             <div class="card-body">
-              <canvas id="myAreaChart" width="100%" height="30"></canvas>
+
+
+                <?php
+
+                $dataPoints = array(
+                    array("y" => 7,"label" => "Monday" ),
+                    array("y" => 12,"label" => "Tuesday" ),
+                    array("y" => 28,"label" => "Wednesday" ),
+                    array("y" => 18,"label" => "Thursday" ),
+                    array("y" => 41,"label" => "Friday" ),
+                    array("y" => 36,"label" => "Saturday"),
+                    array("y" => 36,"label" => "Sunday")
+                );
+
+                ?>
+                  <div id="chartContainer" style="height: 300px; width: 80%;"></div>
+                  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                  <script>
+                      window.onload = function() {
+
+                          var chart = new CanvasJS.Chart("chartContainer", {
+                              animationEnabled: true,
+                              title:{
+                                  text: "Sales"
+                              },
+                              axisY: {
+                                  title: "Revenue (in KES)",
+                                  prefix: "Ksh",
+                                  suffix:  ""
+                              },
+                              data: [{
+                                  type: "bar",
+                                  yValueFormatString: "$#,##0K",
+                                  indexLabel: "{y}",
+                                  indexLabelPlacement: "inside",
+                                  indexLabelFontWeight: "bolder",
+                                  indexLabelFontColor: "white",
+                                  dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                              }]
+                          });
+                          chart.render();
+
+                      }
+                  </script>
+
             </div>
-            
+
           </div>
-  
+
           <!-- DataTables Example -->
           <div class="card mb-3">
             <div class="card-header">
@@ -91,7 +135,7 @@
              <a class="link-item" href="/Product">Stock</a> </div>
             <div class="card-body">
               <div class="table-responsive">
-                
+
                   @if(count($product)>0)
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <th>Product Name</th>
@@ -100,9 +144,9 @@
                       <th>Quantity</th>
                       <th>Date updated</th>
                       <th>Edit</th>
-                  
+
                       @foreach ($product as $product)
-                      <tr> 
+                      <tr>
                           <td>{{$product->Productname}}</td>
                       <td>{{$product->Description}}</td>
                       <td>{{$product->Price}}</td>
@@ -114,32 +158,32 @@
                              {{Form::Submit('Delete',['class'=>'btn btn-danger'])}}
                           {!!Form::close()!!}</td>
                       </tr>
-                          
+
                       @endforeach
                   </table>
                   @endif
                 </div>
               </div>
-              <div class="card-footer small text-muted">Updated at {{$product->updated_at}} </div>
+              <div class="card-footer small text-muted">Updated at </div>
             </div>
-    
+
           </div>
           <!-- /.container-fluid -->
-    
+
           <!-- Sticky Footer -->
-          
-    
+
+
         </div>
         <!-- /.content-wrapper -->
-    
-     
-      
-    
+
+
+
+
       <!-- Scroll to Top Button-->
       <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
       </a>
-    
+
       <!-- Logout Modal-->
       <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -158,26 +202,26 @@
           </div>
         </div>
       </div>
-    
+
       <!-- Bootstrap core JavaScript-->
       <script src="vendor/jquery/jquery.min.js"></script>
       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
+
       <!-- Core plugin JavaScript-->
       <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    
+
       <!-- Page level plugin JavaScript-->
       <script src="vendor/chart.js/Chart.min.js"></script>
       <script src="vendor/datatables/jquery.dataTables.js"></script>
       <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-    
+
       <!-- Custom scripts for all pages-->
       <script src="js/sb-admin.min.js"></script>
-    
+
       <!-- Demo scripts for this page-->
       <script src="js/demo/datatables-demo.js"></script>
       <script src="js/demo/chart-area-demo.js"></script>
-    
+
                 </div>
             </div>
         </div>

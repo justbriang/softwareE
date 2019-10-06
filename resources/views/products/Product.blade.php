@@ -3,7 +3,8 @@
 
 @endsection
 @section('content')
-<a href="/Product/create">update stock</a>
+<a href="/Product/create"> <input type="button" value="Update Stock" class="btn btn-primary"></a>
+<br><br>
 @if(count($product)>0)
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <th>Product Name</th>
@@ -12,9 +13,9 @@
                     <th>Quantity</th>
                     <th>Date updated</th>
                     <th>Edit</th>
-                
+
                     @foreach ($product as $product)
-                    <tr> 
+                    <tr>
                         <td>{{$product->Productname}}</td>
                     <td>{{$product->Description}}</td>
                     <td>{{$product->Price}}</td>
@@ -26,11 +27,11 @@
                            {{Form::Submit('Delete',['class'=>'btn btn-danger'])}}
                         {!!Form::close()!!}</td>
                     </tr>
-                        
+
                     @endforeach
                 </table>
                 @endif
 
-                <a href="/home" class="btn btn-default">Back</a>
-            
+                <a href="/home" class="btn btn-default"><input type="button" value="Back" class="btn btn-primary"></a>
+
 @endsection

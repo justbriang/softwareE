@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Sales;
+use Khill\Lavacharts\Lavacharts; //subject to being removed
+
+
+
 
 class SalesController extends Controller
 {
@@ -26,6 +30,7 @@ class SalesController extends Controller
     public function create()
     {
         //
+        return view('sales.create');
     }
 
     /**
@@ -37,6 +42,23 @@ class SalesController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'product_id'=>'required',
+            'category_id'=>'required',
+            'quantity'=>'required',
+            'salesType'=>'required',
+
+        ]);
+        //create sale
+        $sale=new Sales;
+        $sale->id=$request->input('id');
+        $sale->productid=$request->input('productid');
+        $sale->category_id=$request->input('category_id');
+        $sale->quantity=$request->input('quantity');
+        $sale->salesType=$request->input('salesType');
+        $sale->save();
+        return redirect('/Sales')->with('success', 'Sales updated!');
+
     }
 
     /**
@@ -71,6 +93,22 @@ class SalesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'product_id'=>'required',
+            'category_id'=>'required',
+            'quantity'=>'required',
+            'salesType'=>'required',
+        ]);
+        //create sale
+        $sale=new Sales;
+        $sale->id=$request->input('id');
+        $sale->productid=$request->input('productid');
+        $sale->category_id=$request->input('category_id');
+        $sale->quantity=$request->input('quantity');
+        $sale->salesType=$request->input('salesType');
+        $sale->save();
+        return redirect('/Sales')->with('success', 'Sales updated!');
+
     }
 
     /**
@@ -81,6 +119,8 @@ class SalesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sale=Sales::find($id);
+        $sale->delete();
+        return redirect('/Sales')->with('success', 'Sale removed');
     }
 }

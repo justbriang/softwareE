@@ -2,7 +2,7 @@
 @section('header')
 
 @endsection
-@section('content') 
+@section('content')
 {!! Form::open(['action'=>['ProductController@update',$product->id],'method'=>'POST']) !!}
     <div class="form-group">
         {{form::label('Productname', 'Productname')}}
@@ -13,8 +13,8 @@
             {{form::Textarea('Description',$product->Description,['class' =>'form-control','placeholder'=>'Description'])}}
         </div>
     <div class="form-group">
-                {{form::label('Categoryid', 'Categoryid')}}
-                {{form::select('Categoryid',[1=>'lipstick',2=>'Babydiaper',3=>'Adultdiaper',4=>'moisturiser'],null,['class' =>'form-control','placeholder'=>'Pick a category...'])}}
+                {{form::label('category_id', 'category_id')}}
+                {{form::select('category_id',[1=>'lipstick',2=>'Babydiaper',3=>'Adultdiaper',4=>'moisturiser'],null,['class' =>'form-control','placeholder'=>'Pick a category...'])}}
             </div>
     <div class="form-group">
                 {{form::label('Quantity', 'Quantity')}}
@@ -26,7 +26,7 @@
         </div>
         {{Form::hidden('_method','PUT')}}
         {{Form::submit('Update stock',['class'=>'btn btn-primary'])}}
-            
+
 {!! Form::close() !!}
 
                 <a href="/home" class="btn btn-default">Back</a>

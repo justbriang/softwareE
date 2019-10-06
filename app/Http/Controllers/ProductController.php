@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
 
-    {  
+    {
         $product=Product::orderby('Productname','asc')->take(3)->get();
         return view('products.Product')->with('product',$product)
         ;
@@ -29,7 +29,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -43,7 +44,7 @@ class ProductController extends Controller
        $this->validate($request,[
            'Productname'=>'required',
            'Description'=>'required',
-           'Categoryid'=>'required',
+           'category_id'=>'required',
            'Quantity'=>'required',
            'Price'=>'required',
 
@@ -52,11 +53,11 @@ class ProductController extends Controller
        $product=new Product;
        $product->Productname=$request->input('Productname');
        $product->Description=$request->input('Description');
-       $product->Categoryid=$request->input('Categoryid');
+       $product->category_id=$request->input('category_id');
        $product->Quantity=$request->input('Quantity');
        $product->Price=$request->input('Price');
        $product->save();
-       return redirect('/Product')->with('success','Product updated');
+       return redirect('/Product')->with('success','Product updated!');
 
     }
 
@@ -95,16 +96,16 @@ class ProductController extends Controller
         $this->validate($request,[
             'Productname'=>'required',
             'Description'=>'required',
-            'Categoryid'=>'required',
+            'category_id'=>'required',
             'Quantity'=>'required',
             'Price'=>'required',
- 
+
         ]);
         //create post
         $product=Product::find($id);
         $product->Productname=$request->input('Productname');
         $product->Description=$request->input('Description');
-        $product->Categoryid=$request->input('Categoryid');
+        $product->category_id=$request->input('category_id');
         $product->Quantity=$request->input('Quantity');
         $product->Price=$request->input('Price');
         $product->save();

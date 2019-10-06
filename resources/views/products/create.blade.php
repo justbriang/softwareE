@@ -12,9 +12,10 @@
             {{form::label('Description', 'Description')}}
             {{form::Textarea('Description','',['class' =>'form-control','placeholder'=>'Description'])}}
         </div>
+{{--{{$categories}}--}}
     <div class="form-group">
-                {{form::label('Categoryid', 'Categoryid')}}
-                {{form::select('Categoryid',[1=>'lipstick',2=>'Babydiaper',3=>'Adultdiaper',4=>'moisturiser'],null,['class' =>'form-control','placeholder'=>'Pick a category...'])}}
+                {{form::label('category_id', 'category_id')}}
+                {{form::select('category_id',[1=>'lipstick',2=>'Babydiaper',4=>'Adultdiaper',5=>'moisturiser'],null,['class' =>'form-control','placeholder'=>'Pick a category...'])}}
             </div>
     <div class="form-group">
                 {{form::label('Quantity', 'Quantity')}}
@@ -25,7 +26,7 @@
                     {{form::number('Price','',['class' =>'form-control','placeholder'=>'Price'])}}
         </div>
         {{Form::submit('Update stock',['class'=>'btn btn-primary'])}}
-            
+
 {!! Form::close() !!}
 
                 <a href="/home" class="btn btn-default">Back</a>

@@ -20,6 +20,7 @@ class CreateSalesTable extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('quantity');
+            $table->string('salesType');
             $table->timestamps();
         });
     }
