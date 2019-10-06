@@ -21,7 +21,7 @@
                     <td>{{$product->Price}}</td>
                     <td>{{$product->Quantity}}</td>
                         <td>{{$product->updated_at}}</td>
-                        <td><a href="/Product/{{$product->id}}/edit" class="btn btn-default">Edit</a></td>
+                        <td><a href="/Product/{{$product->id}}/edit" class="btn btn-info">Edit</a></td>
                        <td> {!!Form::open(['action'=>['ProductController@destroy',$product->id],'method'=>'POST','class'=>'pull-right'])!!}
                            {{Form::hidden('_method','DELETE')}}
                            {{Form::Submit('Delete',['class'=>'btn btn-danger'])}}
