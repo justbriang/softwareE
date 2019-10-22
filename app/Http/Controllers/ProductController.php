@@ -29,7 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::pluck('Categoryname', 'id');
         return view('products.create', compact('categories'));
     }
 

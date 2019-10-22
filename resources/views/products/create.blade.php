@@ -14,8 +14,8 @@
         </div>
 {{--{{$categories}}--}}
     <div class="form-group">
-                {{form::label('category_id', 'category_id')}}
-                {{form::select('category_id',[1=>'lipstick',2=>'Babydiaper',4=>'Adultdiaper',5=>'moisturiser'],null,['class' =>'form-control','placeholder'=>'Pick a category...'])}}
+                {{form::label('category_id', 'Category')}}
+                {{form::select('category_id',$categories,null,['class' =>'form-control','placeholder'=>'Pick a category...'])}}
             </div>
     <div class="form-group">
                 {{form::label('Quantity', 'Quantity')}}
