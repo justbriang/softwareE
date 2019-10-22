@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $category=Category::orderby('Categoryname','asc')->take(5)->get();
-        return view('category.index')->with('category');
+        return view('category.index')->with('category',$category);
     }
 
     /**
@@ -38,15 +38,15 @@ class CategoryController extends Controller
     {
         $this->validate($request,[
             'Categoryname'=>'required',
-           
- 
+
+
         ]);
         //create post
         $category=new Category;
         $category->Categoryname=$request->input('Categoryname');
         $category->save();
         return redirect('/Category')->with('success','Category updated');
- 
+
     }
 
     /**
@@ -83,11 +83,11 @@ class CategoryController extends Controller
     {
         $this->validate($request,[
             'Categoryname'=>'required',
- 
+
         ]);
         //create post
         $category=Category::find($id);
-      
+
         $category->Categoryname=$request->input('Categoryname');
         $category->save();
         return redirect('Category')->with('success','Category updated');
