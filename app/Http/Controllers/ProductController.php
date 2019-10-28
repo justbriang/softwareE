@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function index()
 
     {
-        $product=Product::orderby('Productname','asc')->take(3)->get();
+        $product=Product::orderby('Productname','asc')->take(10)->get();
         return view('products.Product')->with('product',$product)
         ;
     }
@@ -81,7 +81,8 @@ class ProductController extends Controller
     public function edit($id)
     {
       $product=Product::find($id);
-      return view('products.edit')->with('product',$product);
+      $categories=Category::pluck('Categoryname','id');
+      return view('products.edit',compact(['product','categories']));
     }
 
     /**

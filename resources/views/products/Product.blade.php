@@ -16,16 +16,16 @@
 
                     @foreach ($product as $product)
                     <tr>
-                        <td>{{$product->Productname}}</td>
+                    <td>{{$product->Productname}}</td>
                     <td>{{$product->Description}}</td>
                     <td>{{$product->Price}}</td>
                     <td>{{$product->Quantity}}</td>
-                        <td>{{$product->updated_at}}</td>
+                     <td>{{$product->updated_at}}</td>
                         <td><a href="/Product/{{$product->id}}/edit" class="btn btn-info">Edit</a></td>
-                       <td> {!!Form::open(['action'=>['ProductController@destroy',$product->id],'method'=>'POST','class'=>'pull-right'])!!}
+                       <td>{!!Form::open(['action'=>['ProductController@destroy',$product->id],'method'=>'POST','class'=>'pull-right'])!!}
                            {{Form::hidden('_method','DELETE')}}
                            {{Form::Submit('Delete',['class'=>'btn btn-danger'])}}
-                        {!!Form::close()!!}</td>
+                           {!!Form::close()!!}</td>
                     </tr>
 
                     @endforeach

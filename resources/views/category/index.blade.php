@@ -3,7 +3,7 @@
 
 @endsection
 @section('content')
-<a href="/Category/create" class="btn btn-primary">Update Stock</a>
+<a href="/Category/create" class="btn btn-primary">Update Categories</a>
 <br><br>
 
 

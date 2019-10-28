@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 use App\Sales;
-use Khill\Lavacharts\Lavacharts; //subject to being removed
-
-
+use App\Category;
+use DB;
 
 
 class SalesController extends Controller
@@ -17,9 +17,22 @@ class SalesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $sales=Sales::orderby('updated_at','asc')->take(1)->get();
-        return view('sales')->with('sales',$sales);
+    {  $product = Product::pluck('Productname', 'id');
+        $sales=Sales::orderby('updated_at','asc')->take(10)->get();
+        $visitor = DB::table('sales')
+            ->select(
+                DB::raw("(product_id) as prod"),
+                DB::raw("SUM(quantity) as qty"))
+            ->groupBy(DB::raw("product_id"))->get();
+
+
+
+        $result[] = ['Product_id','quantity'];
+        foreach ($visitor as $key => $value) {
+            $result[++$key] = [(int)$value->prod, (int)$value->qty];
+        }
+
+        return view('sales.Sales')->with('sales',$sales)->with('visitor',json_encode($result));
     }
 
     /**
@@ -29,9 +42,11 @@ class SalesController extends Controller
      */
     public function create()
     {
-        //
-        return view('sales.create');
+
+        $product = Product::pluck('Productname', 'id');
+        return view('sales.create', compact('product'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -44,19 +59,21 @@ class SalesController extends Controller
         //
         $this->validate($request,[
             'product_id'=>'required',
-            'category_id'=>'required',
+
             'quantity'=>'required',
             'salesType'=>'required',
 
         ]);
         //create sale
-        $sale=new Sales;
-        $sale->id=$request->input('id');
-        $sale->productid=$request->input('productid');
-        $sale->category_id=$request->input('category_id');
-        $sale->quantity=$request->input('quantity');
-        $sale->salesType=$request->input('salesType');
-        $sale->save();
+        $sales=new Sales;
+        $sales->id=$request->input('id');
+        $sales->product_id=$request->input('product_id');
+
+        $sales->quantity=$request->input('quantity');
+        $sales->salesType=$request->input('salesType');
+        DB::table('products')->whereId($sales->product_id)->decrement('Quantity',$sales->quantity)
+        ;
+        $sales->save();
         return redirect('/Sales')->with('success', 'Sales updated!');
 
     }
@@ -80,7 +97,9 @@ class SalesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sales=Sales::find($id);
+        $product = Product::pluck('Productname', 'id');
+        return view('sales.create', compact('sales','product'));
     }
 
     /**
@@ -92,24 +111,28 @@ class SalesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $this->validate($request, [
+        $this->validate($request,[
             'product_id'=>'required',
-            'category_id'=>'required',
+
             'quantity'=>'required',
             'salesType'=>'required',
+
         ]);
         //create sale
-        $sale=new Sales;
-        $sale->id=$request->input('id');
-        $sale->productid=$request->input('productid');
-        $sale->category_id=$request->input('category_id');
-        $sale->quantity=$request->input('quantity');
-        $sale->salesType=$request->input('salesType');
-        $sale->save();
+        $sales=Sales::find($id);
+        $sales->id=$request->input('id');
+        $sales->product_id=$request->input('product_id');
+
+        $sales->quantity=$request->input('quantity');
+        $sales->salesType=$request->input('salesType');
+        DB::table('products')->whereId($sales->product_id)->decrement('Quantity',$sales->quantity)
+        ;
+        $sales->save();
         return redirect('/Sales')->with('success', 'Sales updated!');
 
     }
+
+
 
     /**
      * Remove the specified resource from storage.

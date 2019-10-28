@@ -10,34 +10,34 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
         <title>{{ config('app.name', 'Laravel') }}</title>
-    
+
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-    
+
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    
+
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
           <!-- Custom fonts for this template-->
       <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    
+
       <!-- Page level plugin CSS-->
       <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-    
+
       <!-- Custom styles for this template-->
       <link href="{{ asset('css/lay.css') }}"rel="stylesheet">
 
         <!-- Styles -->
         <style>
             html, body {
-                background-image: url("/landing.jpg"); 
+                background-image: url("/landing.jpg");
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -94,28 +94,19 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         Fredkam Enterprises
                     </a>
-                
+
                       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                
+
                     <!-- Navbar Search -->
-                    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                          <button class="btn btn-primary" type="button">
-                            <i class="fas fa-search"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                
+                    <!--Navbar Search has been deleted-->
+
                     <!-- Navbar -->
                     <ul class="navbar-nav ml-auto ml-md-0">
-                     
-                     
+
+
                       @guest
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -147,9 +138,9 @@
                   @endguest
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                    
+
                     </ul>
-                
+
                   </nav>
 
             <div id="content-wrapper">
@@ -161,9 +152,8 @@
                             </main>
                         </div>
 
-              
+
             </div>
         </div>
     </body>
 </html>
-    

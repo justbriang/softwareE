@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Purchases;
+use DB;
 
 class PurchasesController extends Controller
 {
@@ -14,8 +17,8 @@ class PurchasesController extends Controller
      */
     public function index()
     {
-        $purchases=Purchases::orderby('updated_at','asc')->take(1)->get();
-        return view('purchases')->with('purchases',$purchases);
+        $purchases=Purchases::orderby('updated_at','asc')->take(10)->get();
+        return view('purchases.Purchases')->with('purchases',$purchases);
     }
 
     /**
@@ -25,9 +28,10 @@ class PurchasesController extends Controller
      */
     public function create()
     {
-        //
-    }
 
+        $product = Product::pluck('Productname', 'id','category_id');
+        return view('purchases.create', compact('product'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -37,6 +41,24 @@ class PurchasesController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'product_id'=>'required',
+            'quantity'=>'required',
+
+        ]);
+        //create sale
+        $purchases=new Purchases();
+        $purchases->id=$request->input('id');
+        $purchases->product_id=$request->input('product_id');
+        $purchases->category_id=$request->input('category_id');
+        $purchases->category_id=$request->input('category_id');
+        $purchases->quantity=$request->input('quantity');
+        DB::table('products')->whereId($purchases->product_id)->increment('Quantity',$purchases->quantity)
+
+        ;
+        $purchases->save();
+        return redirect('/Purchases')->with('success', 'Purchases updated!');
+
     }
 
     /**
@@ -58,8 +80,11 @@ class PurchasesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $purchases=Purchases::find($id);
+        $product = Product::pluck('Productname', 'id','category_id');
+        return view('purchases.edit', compact('product','purchases'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -71,6 +96,24 @@ class PurchasesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+            'product_id'=>'required',
+            'quantity'=>'required',
+
+        ]);
+        //create sale
+        $purchases=Purchases::find($id);
+        $purchases->id=$request->input('id');
+        $purchases->product_id=$request->input('product_id');
+        $purchases->category_id=$request->input('category_id');
+        $purchases->category_id=$request->input('category_id');
+        $purchases->quantity=$request->input('quantity');
+        DB::table('products')->whereId($purchases->product_id)->increment('Quantity',$purchases->quantity)
+
+        ;
+        $purchases->save();
+        return redirect('/Purchases')->with('success', 'Purchases updated!');
+
     }
 
     /**
