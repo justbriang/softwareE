@@ -18,8 +18,11 @@ class CreateSalesTable extends Migration
             $table->bigInteger('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
 
+
             $table->integer('quantity');
-            $table->string('salesType');
+          
+            $table->bigInteger('Payment')->unsigned();
+            $table->foreign('Payment')->references('id')->on('payments');
             $table->string('clientName');
             $table->timestamps();
         });

@@ -19,7 +19,7 @@ class SalesController extends Controller
      */
     public function index()
     {   $product = Product::pluck('Productname', 'id');
-        $payments = Payments::pluck('Payment');
+        $payment= Payments::pluck('Payment');
         $sales=Sales::orderby('updated_at','asc')->take(10)->get();
         $visitor = DB::table('sales')
             ->select(
@@ -34,7 +34,7 @@ class SalesController extends Controller
             $result[++$key] = [(int)$value->prod, (int)$value->qty];
         }
 
-        return view('sales.Sales',compact('product','payments','sales'))->with('visitor',json_encode($result));
+        return view('sales.Sales',compact('product','payment','sales'))->with('visitor',json_encode($result));
     }
 
     /**
@@ -46,8 +46,8 @@ class SalesController extends Controller
     {
 
         $product = Product::pluck('Productname', 'id');
-        $payments = Payments::pluck('Payment', 'id');
-        return view('sales.create', compact('product','payments'));
+        $payment = Payments::pluck('Payment', 'id');
+        return view('sales.create', compact('product','payment'));
     }
 
 
@@ -64,7 +64,7 @@ class SalesController extends Controller
             'product_id'=>'required',
 
             'quantity'=>'required',
-            'salesType'=>'required',
+            'payment'=>'required',
 
         ]);
         //create sale
@@ -72,7 +72,7 @@ class SalesController extends Controller
         $sales->id=$request->input('id');
         $sales->product_id=$request->input('product_id');
         $sales->quantity=$request->input('quantity');
-        $sales->salesType=$request->input('salesType');
+        $sales->Payment=$request->input('payment');
         DB::table('products')->whereId($sales->product_id)->decrement('Quantity',$sales->quantity)
         ;
         $sales->save();
@@ -101,8 +101,8 @@ class SalesController extends Controller
     {
         $sales=Sales::find($id);
         $product = Product::pluck('Productname', 'id');
-        $payments = Payments::pluck('Payment'); 
-        return view('sales.edit', compact('sales','product'));
+        $payment = Payments::pluck('Payment'); 
+        return view('sales.edit', compact('sales','product','payment'));
     }
 
     /**
@@ -117,7 +117,7 @@ class SalesController extends Controller
         $this->validate($request,[
             'product_id'=>'required',
             'quantity'=>'required',
-            'salesType'=>'required',
+            'payment'=>'required',
 
         ]);
         //create sale
@@ -125,7 +125,7 @@ class SalesController extends Controller
         $sales->id=$request->input('id');
         $sales->product_id=$request->input('product_id');
         $sales->quantity=$request->input('quantity');
-        $sales->salesType=$request->input('salesType');
+        $sales->Payment=$request->input('payment');
         DB::table('products')->whereId($sales->product_id)->decrement('Quantity',$sales->quantity)
         ;
         $sales->save();

@@ -89,7 +89,7 @@
             </div>
         </div>
     </div>
-
+    @if(count($product)>0)
     <!-- Area Chart Example-->
     <div class="card mb-3">
         <div class="card-header">
@@ -112,7 +112,7 @@
         <div class="card-body">
             <div class="table-responsive">
 
-                @if(count($product)>0)
+           
                     <table class="table table-dark" id="dataTable" width="100%" cellspacing="0">
                         <th>Product Name</th>
                         <th>Product Description</th>
@@ -140,7 +140,7 @@
                 @endif
             </div>
         </div>
-        <div class="card-footer small text-muted">Updated at {{$product->updated_at}} </div>
+
     </div>
 
     </div>

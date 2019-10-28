@@ -36,7 +36,7 @@
             <tr>
                 <td>{{$product[$sale->id]}}</td>
                 <td>{{$sale->quantity}}</td>
-                <td>{{$payments[$sale->salesType]}}</td>
+                <td>{{$payment[$sale->Payment]}}</td>
                 <td>{{$sale->created_at}}</td>
                 <td>{{$sale->updated_at}}</td>
                 
