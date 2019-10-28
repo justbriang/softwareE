@@ -16,7 +16,8 @@
 
             @foreach($purchases as $purchase)
                 <tr>
-                    <td>{{$purchase->id}}</td>
+                
+                    <td>{{$product[$purchase->id]}}</td>                  
                     <td>{{$purchase->quantity}}</td>
                     <td>{{$purchase->created_at}}</td>
                     <td>{{$purchase->updated_at}}</td>

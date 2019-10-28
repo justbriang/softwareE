@@ -13,7 +13,7 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable(visitor);
             var options = {
-                title: 'Line Chart Showing Quantity sold for various products ',
+                title: 'Line Chart Showing Quantity Sold for various products ',
                 curveType: 'function',
                 legend: { position: 'bottom' }
             };
@@ -26,7 +26,7 @@
 <br><br>
 @if(count($sales)>0)
         <table class="table table-dark" id="dataTable" width="100%" cellspacing="0">
-            <th>Sale No.</th>
+            <th>Sale Name</th>
             <th>Quantity</th>
             <th>Sale Type</th>
             <th>Client Name</th>
@@ -34,10 +34,9 @@
 
             @foreach($sales as $sale)
             <tr>
-                <td>{{$sale->id}}</td>
+                <td>{{$products}}</td>
                 <td>{{$sale->quantity}}</td>
-                <td>{{$sales->Payment}}</td>
-                <td>{{$sale->clientName}}</td>
+                <td>{{$payments}}</td>
                 <td>{{$sale->created_at}}</td>
                 <td>{{$sale->updated_at}}</td>
                 

@@ -18,7 +18,7 @@ class PurchasesController extends Controller
     public function index()
     {
         $purchases=Purchases::orderby('updated_at','asc')->take(10)->get();
-       // $product = Product::pluck('Productname', 'id');
+        $product = Product::pluck('Productname', 'id');
        // $purchases=Purchases::find($id);
         return view('purchases.Purchases',compact('purchases','product'));
     }

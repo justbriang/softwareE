@@ -18,7 +18,8 @@ class SalesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  $product = Product::pluck('Productname', 'id');
+    {   $product = Product::pluck('Productname', 'id');
+        $payments = Payments::pluck('Payment');
         $sales=Sales::orderby('updated_at','asc')->take(10)->get();
         $visitor = DB::table('sales')
             ->select(
@@ -100,6 +101,7 @@ class SalesController extends Controller
     {
         $sales=Sales::find($id);
         $product = Product::pluck('Productname', 'id');
+        $payments = Payments::pluck('Payment');
         return view('sales.edit', compact('sales','product'));
     }
 
