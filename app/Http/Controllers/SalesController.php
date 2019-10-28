@@ -34,7 +34,7 @@ class SalesController extends Controller
             $result[++$key] = [(int)$value->prod, (int)$value->qty];
         }
 
-        return view('sales.Sales')->with('sales',$sales)->with('visitor',json_encode($result));
+        return view('sales.Sales',compact('product','payments','sales'))->with('visitor',json_encode($result));
     }
 
     /**
@@ -101,7 +101,7 @@ class SalesController extends Controller
     {
         $sales=Sales::find($id);
         $product = Product::pluck('Productname', 'id');
-        $payments = Payments::pluck('Payment');
+        $payments = Payments::pluck('Payment'); 
         return view('sales.edit', compact('sales','product'));
     }
 

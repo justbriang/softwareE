@@ -23,7 +23,7 @@
     </script>
 
 <a href="/Sales/create"><input type="button" value="Record Sale" class="btn btn-primary"> </a>
-<br><br>
+
 @if(count($sales)>0)
         <table class="table table-dark" id="dataTable" width="100%" cellspacing="0">
             <th>Sale Name</th>
@@ -34,9 +34,9 @@
 
             @foreach($sales as $sale)
             <tr>
-                <td>{{$products}}</td>
+                <td>{{$product[$sale->id]}}</td>
                 <td>{{$sale->quantity}}</td>
-                <td>{{$payments}}</td>
+                <td>{{$payments[$sale->salesType]}}</td>
                 <td>{{$sale->created_at}}</td>
                 <td>{{$sale->updated_at}}</td>
                 
