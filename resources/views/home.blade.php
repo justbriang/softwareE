@@ -55,29 +55,14 @@
                 </a>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-warning o-hidden h-100">
-                <div class="card-body">
-                    <div class="card-body-icon">
-                        <i class="fas fa-fw fa-list"></i>
-                    </div>
-                    <div class="mr-5">pending orders!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="/orders">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-            </div>
-        </div>
+     
         <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-success o-hidden h-100">
                 <div class="card-body">
                     <div class="card-body-icon">
                         <i class="fas fa-fw fa-shopping-cart"></i>
                     </div>
-                    <div class="mr-5">available stock!</div>
+                    <div class="mr-5">Available stock!</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="/Product">
                     <span class="float-left">View Details</span>
@@ -128,13 +113,13 @@
             <div class="table-responsive">
 
                 @if(count($product)>0)
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-dark" id="dataTable" width="100%" cellspacing="0">
                         <th>Product Name</th>
                         <th>Product Description</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Date updated</th>
-                        <th>Edit</th>
+                        
 
                         @foreach ($product as $product)
                             <tr>
@@ -143,7 +128,7 @@
                                 <td>{{$product->Price}}</td>
                                 <td>{{$product->Quantity}}</td>
                                 <td>{{$product->updated_at}}</td>
-                                <td><a href="/Product/{{$product->id}}/edit" class="btn btn-default">Edit</a></td>
+                                <td><a href="/Product/{{$product->id}}/edit" class="btn btn-info">Edit</a></td>
                                 <td> {!!Form::open(['action'=>['ProductController@destroy',$product->id],'method'=>'POST','class'=>'pull-right'])!!}
                                     {{Form::hidden('_method','DELETE')}}
                                     {{Form::Submit('Delete',['class'=>'btn btn-danger'])}}

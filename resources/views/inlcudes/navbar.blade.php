@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Fredkam</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -37,7 +37,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-image: url("/landing.jpg");
+                background-image: url("/stock.jpg");
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -118,6 +118,7 @@
                       @endif
                   @else
                   <li><a  class="nav-link" href="/Product/create">New Stock</a></li>
+                  <li><a  class="nav-link" href="/home">Dashboard</a></li>
                       <li class="nav-item dropdown">
                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                               <img src ="login.png" height="25px"/>{{ Auth::user()->name }} <span class="caret"></span>

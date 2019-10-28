@@ -6,13 +6,13 @@
 <a href="/Product/create"> <input type="button" value="Update Stock" class="btn btn-primary"></a>
 <br><br>
 @if(count($product)>0)
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-dark" id="dataTable" width="100%" cellspacing="0">
                     <th>Product Name</th>
                     <th>Product Description</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Date updated</th>
-                    <th>Edit</th>
+              
 
                     @foreach ($product as $product)
                     <tr>

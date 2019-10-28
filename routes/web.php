@@ -21,4 +21,5 @@ Route::get('/home','HomeController@index')->name('home');
 Route::resource('Product','ProductController');
 Route::resource('Category','CategoryController');
 Route::resource('Purchases','PurchasesController');
+Route::resource('Payments','PaymentController');
 Route::resource('Sales','SalesController');

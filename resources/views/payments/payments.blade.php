@@ -3,22 +3,22 @@
 
 @endsection
 @section('content')
-<a href="/Category/create" class="btn btn-primary">Update Categories</a>
+<a href="/Payments/create" class="btn btn-primary">Create Payment Type</a>
 <br><br>
 
 
-@if(count($category)>0)
+@if(count($payment)>0)
                 <table class="table table-dark" id="dataTable" width="100%" cellspacing="0">
-                    <th>Category name</th>
+                    <th>Payment Type</th>
                     <th>Date updated</th>
-                    <th>Edit</th>
+                    
 
-                    @foreach ($category as $category)
+                    @foreach ($payment as $payment)
                     <tr>
-                    <td>{{$category->Categoryname}}</td>
-                    <td>{{$category->updated_at}}</td>
-                    <td><a href="/Category/{{$category->id}}/edit" class="btn btn-info">Edit</a></td>
-                    <td> {!!Form::open(['action'=>['CategoryController@destroy',$category->id],'method'=>'POST','class'=>'pull-right'])!!}
+                    <td>{{$payment->Payment}}</td>
+                    <td>{{$payment->updated_at}}</td>
+                    <td><a href="/Payments/{{$payment->id}}/edit" class="btn btn-info">Edit</a></td>
+                    <td> {!!Form::open(['action'=>['PaymentController@destroy',$payment->id],'method'=>'POST','class'=>'pull-right'])!!}
                            {{Form::hidden('_method','DELETE')}}
                            {{Form::Submit('Delete',['class'=>'btn btn-danger'])}}
                         {!!Form::close()!!}</td>

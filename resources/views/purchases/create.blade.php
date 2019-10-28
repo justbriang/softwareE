@@ -14,7 +14,7 @@
 
     <div class="form-group">
         <!--This is for the category of products being sold-->
-        {{form::label('product_id', 'product_id')}}
+        {{form::label('Product name', 'Product name')}}
         {{form::select('product_id',$product,null,['class' =>'form-control','placeholder'=>'Pick a product...'])}}
     </div>
 

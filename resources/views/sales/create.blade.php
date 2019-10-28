@@ -5,16 +5,12 @@
 @endsection
 @section('content')
 {!! Form::open(['action'=>'SalesController@store', 'method'=>'POST']) !!}
-{{--    <div class="form-group">--}}
-{{--        <!--This is for the name of the product being sold-->--}}
-{{--        {{form::label()}}--}}
 
-{{--    </div>--}}
 
 
     <div class="form-group">
         <!--This is for the category of products being sold-->
-        {{form::label('product_id', 'product_id')}}
+        {{form::label('Product Name', 'Product Name')}}
         {{form::select('product_id',$product,null,['class' =>'form-control','placeholder'=>'Pick a product...'])}}
     </div>
 
@@ -30,7 +26,7 @@
         <!--This is for the type of sale in question. Whether cash or credit-->
 
             {{form::label('Sales Type', 'Sales Type')}}
-            {{form::select('salesType',[1=>'Cash/Cheque', 2=>'Credit'],null,['class'=>'form-control','placeholder'=>'Pick a sale type'])}}
+            {{form::select('salesType',$payments,null,['class'=>'form-control','placeholder'=>'Pick a sale type'])}}
 
     </div>
 {{Form::submit('Create Sale',['class'=>'btn btn-primary'])}}

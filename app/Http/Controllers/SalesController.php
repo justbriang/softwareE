@@ -6,6 +6,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Sales;
 use App\Category;
+use App\Payments;
 use DB;
 
 
@@ -44,7 +45,8 @@ class SalesController extends Controller
     {
 
         $product = Product::pluck('Productname', 'id');
-        return view('sales.create', compact('product'));
+        $payments = Payments::pluck('Payment', 'id');
+        return view('sales.create', compact('product','payments'));
     }
 
 
@@ -68,7 +70,6 @@ class SalesController extends Controller
         $sales=new Sales;
         $sales->id=$request->input('id');
         $sales->product_id=$request->input('product_id');
-
         $sales->quantity=$request->input('quantity');
         $sales->salesType=$request->input('salesType');
         DB::table('products')->whereId($sales->product_id)->decrement('Quantity',$sales->quantity)
@@ -99,7 +100,7 @@ class SalesController extends Controller
     {
         $sales=Sales::find($id);
         $product = Product::pluck('Productname', 'id');
-        return view('sales.create', compact('sales','product'));
+        return view('sales.edit', compact('sales','product'));
     }
 
     /**
@@ -113,7 +114,6 @@ class SalesController extends Controller
     {
         $this->validate($request,[
             'product_id'=>'required',
-
             'quantity'=>'required',
             'salesType'=>'required',
 
@@ -122,7 +122,6 @@ class SalesController extends Controller
         $sales=Sales::find($id);
         $sales->id=$request->input('id');
         $sales->product_id=$request->input('product_id');
-
         $sales->quantity=$request->input('quantity');
         $sales->salesType=$request->input('salesType');
         DB::table('products')->whereId($sales->product_id)->decrement('Quantity',$sales->quantity)

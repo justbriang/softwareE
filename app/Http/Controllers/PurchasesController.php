@@ -18,7 +18,9 @@ class PurchasesController extends Controller
     public function index()
     {
         $purchases=Purchases::orderby('updated_at','asc')->take(10)->get();
-        return view('purchases.Purchases')->with('purchases',$purchases);
+       // $product = Product::pluck('Productname', 'id');
+       // $purchases=Purchases::find($id);
+        return view('purchases.Purchases',compact('purchases','product'));
     }
 
     /**
@@ -124,6 +126,8 @@ class PurchasesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $purchases=Purchases::find($id);
+        $purchases->delete();
+        return redirect('/Purchases')->with('success', 'purchase removed');
     }
 }

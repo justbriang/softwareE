@@ -22,26 +22,25 @@
         }
     </script>
 
-{{--This button should be updated after the create sale page has been finished--}}
 <a href="/Sales/create"><input type="button" value="Record Sale" class="btn btn-primary"> </a>
-
+<br><br>
 @if(count($sales)>0)
-        <table class="table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-dark" id="dataTable" width="100%" cellspacing="0">
             <th>Sale No.</th>
             <th>Quantity</th>
             <th>Sale Type</th>
             <th>Client Name</th>
-            <th>Edit</th>
+            
 
             @foreach($sales as $sale)
             <tr>
                 <td>{{$sale->id}}</td>
                 <td>{{$sale->quantity}}</td>
-                <td>{{$sale->salesType}}</td>
+                <td>{{$sales->Payment}}</td>
                 <td>{{$sale->clientName}}</td>
                 <td>{{$sale->created_at}}</td>
                 <td>{{$sale->updated_at}}</td>
-                {{--Be careful at this point. Pick up from here--}}
+                
                 <td><a href="/Sales/{{$sale->id}}/edit" class="btn btn-info">Edit</a> </td>
                 <td>
                     {!!Form::open(['action'=>['SalesController@destroy',$sale->id],'method'=>'POST','class'=>'pull-right'])!!}
