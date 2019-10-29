@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use DB;
+use App\Category;
 class HomeController extends Controller
 {
     /**
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $product=Product::orderby('Productname','asc')->take(3)->get();
+        $categories = Category::pluck('Categoryname', 'id');
         $visitor = DB::table('products')
             ->select(
                 DB::raw("(Productname) as prod"),
@@ -40,7 +42,7 @@ class HomeController extends Controller
 
 
 
-        return view('home')->with('product',$product)  ->with('visitor',json_encode($result));
+        return view('home',compact('product','categories')) ->with('visitor',json_encode($result));
 
     }
 }

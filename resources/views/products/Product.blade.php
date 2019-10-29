@@ -9,7 +9,9 @@
                 <table class="table table-dark" id="dataTable" width="100%" cellspacing="0">
                     <th>Product Name</th>
                     <th>Product Description</th>
+                    <th>Category</th>
                     <th>Price</th>
+                    
                     <th>Quantity</th>
                     <th>Date updated</th>
               
@@ -18,6 +20,7 @@
                     <tr>
                     <td>{{$product->Productname}}</td>
                     <td>{{$product->Description}}</td>
+                    <td>{{$categories[$product->category_id]}}</td>
                     <td>{{$product->Price}}</td>
                     <td>{{$product->Quantity}}</td>
                      <td>{{$product->updated_at}}</td>

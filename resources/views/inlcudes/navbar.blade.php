@@ -37,12 +37,29 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-image: url("/stock.jpg");
-                color: #636b6f;
+                background-image: url("/back1.jpg");
+                
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
-                height: 100vh;
+                background-position: center center;
                 margin: 0;
+               
+                 /* Background image doesn't tile */
+                background-repeat: no-repeat;
+  
+  /* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
+                 background-attachment: fixed;
+  
+  /* This is what makes the background image rescale based
+     on the container's size */
+                  background-size: cover;
+  
+  /* Set a background color that will be displayed
+     while the background image is loading */
+                    background-color: #464646;
+              
+            
             }
 
             .full-height {
@@ -89,7 +106,7 @@
         </style>
     </head>
     <body>
-            <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+            <nav class="navbar navbar-expand-sm navbar-dark bg-primary static-top">
 
                     <a class="navbar-brand" href="{{ url('/') }}">
                         Fredkam Enterprises
@@ -117,7 +134,7 @@
                           </li>
                       @endif
                   @else
-                  <li><a  class="nav-link" href="/Product/create">New Stock</a></li>
+            
                   <li><a  class="nav-link" href="/home">Dashboard</a></li>
                       <li class="nav-item dropdown">
                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

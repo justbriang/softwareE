@@ -16,9 +16,9 @@ class ProductController extends Controller
      */
     public function index()
 
-    {
+    { $categories = Category::pluck('Categoryname', 'id');
         $product=Product::orderby('Productname','asc')->take(10)->get();
-        return view('products.Product')->with('product',$product)
+        return view('products.Product',compact('product','categories'));
         ;
     }
 

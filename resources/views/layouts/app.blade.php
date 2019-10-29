@@ -1,5 +1,33 @@
 <!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<style>
+html, body {
+                background-image: url("/post.jpg");
+                
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                background-position: center center;
+                margin: 0;
+               
+                 /* Background image doesn't tile */
+                background-repeat: no-repeat;
+  
+  /* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
+                 background-attachment: fixed;
+  
+  /* This is what makes the background image rescale based
+     on the container's size */
+                  background-size: cover;
+  
+  /* Set a background color that will be displayed
+     while the background image is loading */
+                    background-color: #464646;
+              
+            
+            }
+</style>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,7 +85,17 @@
                           </li>
                       @endif
                   @else
-
+                  <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                    
                       <li class="nav-item dropdown">
                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                               <img src {{ asset('login.png') }}= height="25px"/>{{ Auth::user()->name }} <span class="caret"></span>

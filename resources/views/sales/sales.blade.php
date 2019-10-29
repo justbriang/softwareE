@@ -29,15 +29,15 @@
             <th>Sale Name</th>
             <th>Quantity</th>
             <th>Sale Type</th>
-            <th>Client Name</th>
+            <th>Updated_at</th>
             
 
             @foreach($sales as $sale)
             <tr>
-                <td>{{$product[$sale->id]}}</td>
+                <td>{{$product[$sale->product_id]}}</td>
                 <td>{{$sale->quantity}}</td>
                 <td>{{$payment[$sale->Payment]}}</td>
-                <td>{{$sale->created_at}}</td>
+             
                 <td>{{$sale->updated_at}}</td>
                 
                 <td><a href="/Sales/{{$sale->id}}/edit" class="btn btn-info">Edit</a> </td>
@@ -53,8 +53,8 @@
         </table>
 
         <div class="card mb-3">
-            <div class="card-header">
-                <i class="fas fa-chart-area"></i>
+            <div class="card bg-primary">
+             
                 Chart </div>
             <div class="card-body">
                 <div id="linechart" style="width: 900px; height: 500px">
