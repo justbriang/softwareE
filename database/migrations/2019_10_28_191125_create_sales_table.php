@@ -20,10 +20,10 @@ class CreateSalesTable extends Migration
 
 
             $table->integer('quantity');
-          
+
             $table->bigInteger('Payment')->unsigned();
             $table->foreign('Payment')->references('id')->on('payments');
-            $table->string('clientName');
+
             $table->timestamps();
         });
     }
