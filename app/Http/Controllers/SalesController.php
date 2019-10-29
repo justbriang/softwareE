@@ -19,7 +19,7 @@ class SalesController extends Controller
      */
     public function index()
     {   $product = Product::pluck('Productname', 'id');
-        $payment= Payments::pluck('Payment');
+        $payment= Payments::pluck('Payment','id');
         $sales=Sales::orderby('updated_at','asc')->take(10)->get();
         $visitor = DB::table('sales')
             ->select(

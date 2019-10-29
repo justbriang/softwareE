@@ -11,4 +11,5 @@ class Payments extends Model
     public function sales(){
         return $this->belongsTo(Sales::class); 
        }
+       protected $table = 'payments';
 }
