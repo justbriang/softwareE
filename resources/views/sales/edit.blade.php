@@ -30,7 +30,7 @@
         <!--This is for the type of sale in question. Whether cash or credit-->
 
         {{form::label('Sales Type', 'Sales Type')}}
-        {{form::select('salesType',[1=>'Cash/Cheque', 2=>'Credit'],null,['class'=>'form-control','placeholder'=>'Pick a sale type'])}}
+        {{form::select('Payment',$payment,null,['class'=>'form-control','placeholder'=>'Pick a sale type'])}}
 
     </div>
     {{Form::submit('Update Sale',['class'=>'btn btn-primary'])}}

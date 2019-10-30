@@ -7,9 +7,9 @@
 
 
     <div class="form-group">
-       
+
         {{form::label('product_id', 'product_id')}}
-        {{form::select('product_id',$purchases,null,['class' =>'form-control','placeholder'=>'Pick a product...'])}}
+        {{form::select('product_id',$product,null,['class' =>'form-control','placeholder'=>'Pick a product...'])}}
     </div>
 
 

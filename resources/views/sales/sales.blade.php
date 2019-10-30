@@ -30,31 +30,31 @@
             <th>Quantity</th>
             <th>Sale Type</th>
             <th>Updated_at</th>
-            
+
 
             @foreach($sales as $sale)
             <tr>
                 <td>{{$product[$sale->product_id]}}</td>
                 <td>{{$sale->quantity}}</td>
                 <td>{{$payment[$sale->Payment]}}</td>
-             
-                <td>{{$sale->updated_at}}</td>
-                
-                <td><a href="/Sales/{{$sale->id}}/edit" class="btn btn-info">Edit</a> </td>
-                <td>
-                    {!!Form::open(['action'=>['SalesController@destroy',$sale->id],'method'=>'POST','class'=>'pull-right'])!!}
-                    {{Form::hidden('_method','DELETE')}}
-                    {{Form::Submit('Delete',['class'=>'btn btn-danger'])}}
-                    {!!Form::close()!!}
 
-                </td>
+                <td>{{$sale->updated_at}}</td>
+
+{{--                <td><a href="/Sales/{{$sale->id}}/edit" class="btn btn-info">Edit</a> </td>--}}
+{{--                <td>--}}
+{{--                    {!!Form::open(['action'=>['SalesController@destroy',$sale->id],'method'=>'POST','class'=>'pull-right'])!!}--}}
+{{--                    {{Form::hidden('_method','DELETE')}}--}}
+{{--                    {{Form::Submit('Delete',['class'=>'btn btn-danger'])}}--}}
+{{--                    {!!Form::close()!!}--}}
+
+{{--                </td>--}}
             </tr>
             @endforeach
         </table>
 
         <div class="card mb-3">
             <div class="card bg-primary">
-             
+
                 Chart </div>
             <div class="card-body">
                 <div id="linechart" style="width: 900px; height: 500px">

@@ -52,8 +52,6 @@ class PurchasesController extends Controller
         $purchases=new Purchases();
         $purchases->id=$request->input('id');
         $purchases->product_id=$request->input('product_id');
-        $purchases->category_id=$request->input('category_id');
-        $purchases->category_id=$request->input('category_id');
         $purchases->quantity=$request->input('quantity');
         DB::table('products')->whereId($purchases->product_id)->increment('Quantity',$purchases->quantity)
 
@@ -83,7 +81,7 @@ class PurchasesController extends Controller
     public function edit($id)
     {
         $purchases=Purchases::find($id);
-        $product = Product::pluck('Productname', 'id','category_id');
+        $product = Product::pluck('Productname', 'id');
         return view('purchases.edit', compact('product','purchases'));
     }
 
@@ -107,8 +105,6 @@ class PurchasesController extends Controller
         $purchases=Purchases::find($id);
         $purchases->id=$request->input('id');
         $purchases->product_id=$request->input('product_id');
-        $purchases->category_id=$request->input('category_id');
-        $purchases->category_id=$request->input('category_id');
         $purchases->quantity=$request->input('quantity');
         DB::table('products')->whereId($purchases->product_id)->increment('Quantity',$purchases->quantity)
 

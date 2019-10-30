@@ -12,24 +12,24 @@
             <th>Quantity</th>
             <th>Date Purchased</th>
             <th>Date Updated</th>
-           
+
 
             @foreach($purchases as $purchase)
                 <tr>
-                
-                    <td>{{$product[$purchase->product_id]}}</td>                  
+
+                    <td>{{$product[$purchase->product_id]}}</td>
                     <td>{{$purchase->quantity}}</td>
                     <td>{{$purchase->created_at}}</td>
                     <td>{{$purchase->updated_at}}</td>
                     {{--Be careful at this point. Pick up from here--}}
-                    <td><a href="/Purchases/{{$purchase->id}}/edit" class="btn btn-info">Edit</a> </td>
-                    <td>
-                        {!!Form::open(['action'=>['PurchasesController@destroy',$purchase->id],'method'=>'POST','class'=>'pull-right'])!!}
-                        {{Form::hidden('_method','DELETE')}}
-                        {{Form::Submit('Delete',['class'=>'btn btn-danger'])}}
-                        {!!Form::close()!!}
+{{--                    <td><a href="/Purchases/{{$purchase->id}}/edit" class="btn btn-info">Edit</a> </td>--}}
+{{--                    <td>--}}
+{{--                        {!!Form::open(['action'=>['PurchasesController@destroy',$purchase->id],'method'=>'POST','class'=>'pull-right'])!!}--}}
+{{--                        {{Form::hidden('_method','DELETE')}}--}}
+{{--                        {{Form::Submit('Delete',['class'=>'btn btn-danger'])}}--}}
+{{--                        {!!Form::close()!!}--}}
 
-                    </td>
+{{--                    </td>--}}
                 </tr>
             @endforeach
         </table>

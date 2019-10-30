@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use DB;
 
 
 class ProductController extends Controller
@@ -18,7 +19,20 @@ class ProductController extends Controller
 
     { $categories = Category::pluck('Categoryname', 'id');
         $product=Product::orderby('Productname','asc')->take(10)->get();
-        return view('products.Product',compact('product','categories'));
+        $visitor = DB::table('products')
+            ->select(
+                DB::raw("(Productname) as prod"),
+                DB::raw("SUM(Quantity) as qty"))
+            ->groupBy(DB::raw("Productname"))->get();
+
+
+
+        $result[] = ['Productname','Quantity'];
+        foreach ($visitor as $key => $value) {
+            $result[++$key] = [$value->prod, (int)$value->qty];
+        }
+
+        return view('products.Product',compact('product','categories'))->with('visitor',json_encode($result));
         ;
     }
 
